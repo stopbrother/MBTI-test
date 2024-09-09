@@ -5,15 +5,18 @@ import Login from "../pages/Login";
 import { LayOut } from "../components/LayOut";
 import { Profile } from "../pages/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
+import { useState } from "react";
 
 const Router = () => {
+  const [user, setUser] = useState(null);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<LayOut />}>
-          <Route path="/" element={<Home />} />
+        <Route path="" element={<LayOut user={user} setUser={setUser} />}>
+          <Route path="/" element={<Home user={user} />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+
           <ProtectedRoute
             element={<Route path="/profile" element={<Profile />} />}
           ></ProtectedRoute>
