@@ -2,12 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import { login } from "../api/auth";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleLogin = async (formData) => {
     try {
-      await login(formData);
+      const userData = await login(formData);
+      setUser(userData);
       navigate("/");
     } catch {
       alert("로그인에 실패했습니다. 다시 시도해주세요.");
