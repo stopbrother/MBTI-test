@@ -20,3 +20,12 @@ export const getUserProfile = async (token) => {
   });
   return response.data;
 };
+
+export const updateProfile = async (formData, token) => {
+  const response = await axios.patch(`${API_URL}/profile`, formData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
