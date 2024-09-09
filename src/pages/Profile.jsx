@@ -13,7 +13,6 @@ export const Profile = ({ user, setUser }) => {
     } else {
       const fetchUserInfo = async () => {
         const token = localStorage.getItem("accessToken");
-        console.log("effectToken", token);
 
         if (token) {
           const userData = await getUserProfile(token);
