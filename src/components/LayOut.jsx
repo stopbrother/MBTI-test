@@ -7,7 +7,7 @@ export const LayOut = () => {
   //TODO 로그인 하지 않은 사용자 -> login 페이지로
   useEffect(() => {}, []);
 
-  //   const handleLogOut = () => {};
+  const handleLogOut = () => {};
 
   return (
     <div>
@@ -15,7 +15,14 @@ export const LayOut = () => {
         <nav>
           <Link to="/">홈</Link>
           <div>
-            <Link to="/login">로그인</Link>
+            {user ? (
+              <>
+                <Link to="/profile">프로필</Link>
+                <button onClick={handleLogOut}>로그아웃</button>
+              </>
+            ) : (
+              <Link to="/login">로그인</Link>
+            )}
           </div>
         </nav>
       </header>
