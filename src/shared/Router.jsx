@@ -3,6 +3,8 @@ import Home from "../pages/Home";
 import SignUp from "../pages/SignUp";
 import Login from "../pages/Login";
 import { LayOut } from "../components/LayOut";
+import { Profile } from "../pages/Profile";
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const Router = () => {
   return (
@@ -12,6 +14,9 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <ProtectedRoute>
+            <Route path="/profile" element={<Profile />} />
+          </ProtectedRoute>
         </Route>
       </Routes>
     </BrowserRouter>
