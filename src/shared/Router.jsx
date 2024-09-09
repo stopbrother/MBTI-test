@@ -18,7 +18,12 @@ const Router = () => {
           <Route path="/login" element={<Login setUser={setUser} />} />
 
           <ProtectedRoute
-            element={<Route path="/profile" element={<Profile />} />}
+            element={
+              <Route
+                path="/profile"
+                element={<Profile user={user} setUser={setUser} />}
+              />
+            }
           ></ProtectedRoute>
         </Route>
       </Routes>
