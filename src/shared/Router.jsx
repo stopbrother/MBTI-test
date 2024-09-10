@@ -6,6 +6,8 @@ import { LayOut } from "../components/LayOut";
 import { Profile } from "../pages/Profile";
 import ProtectedRoute from "../components/ProtectedRoute";
 import { useState } from "react";
+import Test from "../pages/Test";
+import TestResult from "../pages/TestResult";
 
 const Router = () => {
   const [user, setUser] = useState(null);
@@ -21,6 +23,24 @@ const Router = () => {
             element={
               <ProtectedRoute user={user}>
                 <Profile user={user} setUser={setUser} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/test"
+            element={
+              <ProtectedRoute user={user}>
+                <Test user={user} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/results"
+            element={
+              <ProtectedRoute user={user}>
+                <TestResult user={user} />
               </ProtectedRoute>
             }
           />

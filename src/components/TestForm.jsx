@@ -1,15 +1,22 @@
 import { useState } from "react";
 import { questions } from "../data/questions";
 
-const TestForm = () => {
+const TestForm = ({ onSubmit }) => {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
 
-  const handleChange = (index, answer) => {};
+  const handleChange = (index, answer) => {
+    const newAnswers = [...answers];
+    newAnswers[index] = answer;
+    setAnswers(newAnswers);
+  };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(answers);
+  };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {questions.map((q, index) => (
         <div key={q.id}>
           <p>{q.question}</p>
