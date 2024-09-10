@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 
 const AuthForm = ({ mode, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -15,8 +16,8 @@ const AuthForm = ({ mode, onSubmit }) => {
     onSubmit(formData);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form onSubmit={handleSubmit} className="flex flex-col w-96 gap-2">
+      <FormInput
         type="text"
         name="id"
         placeholder="아이디"
@@ -24,8 +25,8 @@ const AuthForm = ({ mode, onSubmit }) => {
         onChange={handleChange}
         required
       />
-      <input
-        type="text"
+      <FormInput
+        type="password"
         name="password"
         placeholder="비밀번호"
         value={formData.password}
@@ -33,7 +34,7 @@ const AuthForm = ({ mode, onSubmit }) => {
         required
       />
       {mode === "signup" && (
-        <input
+        <FormInput
           type="text"
           id="nickname"
           placeholder="닉네임"
@@ -42,9 +43,21 @@ const AuthForm = ({ mode, onSubmit }) => {
           required
         />
       )}
-      <button>{mode === "login" ? "로그인" : "회원가입"}</button>
+      <FormButton>{mode === "login" ? "로그인" : "회원가입"}</FormButton>
     </form>
   );
 };
 
 export default AuthForm;
+
+const FormInput = styled.input`
+  padding: 10px;
+  height: 40px;
+  color: #000000;
+`;
+const FormButton = styled.button`
+  width: 100%;
+  padding: 6px 16px;
+  background-color: rgb(99, 102, 241);
+  margin-bottom: 4px;
+`;

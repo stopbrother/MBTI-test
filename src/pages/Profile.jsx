@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserProfile, updateProfile } from "../api/auth";
+import { Main } from "../components/Styled";
 
 export const Profile = ({ user, setUser }) => {
   const [nickname, setNickname] = useState(user?.nickname || "");
@@ -48,22 +49,28 @@ export const Profile = ({ user, setUser }) => {
   };
 
   return (
-    <div>
-      <div>
+    <Main>
+      <div className="flex flex-col items-center gap-2 border-solid border border-indigo-600 w-96">
         <h1>프로필 수정</h1>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col items-center gap-4"
+        >
           <div>
-            <label>닉네임</label>
+            <label>닉네임:</label>
             <input
               type="text"
               name="nickname"
               value={nickname}
               onChange={handleNicknameChange}
+              className="h-8 border p-2"
             />
           </div>
-          <button>프로필 수정</button>
+          <button className="bg-indigo-500 h-6 w-28 text-white rounded hover:opacity-75">
+            프로필 수정
+          </button>
         </form>
       </div>
-    </div>
+    </Main>
   );
 };

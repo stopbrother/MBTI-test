@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import { register } from "../api/auth";
+import { FormBox, Main } from "../components/Styled";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,17 +16,20 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <div>
+    <Main>
+      <FormBox>
         <h1>회원가입</h1>
         <AuthForm mode="signup" onSubmit={handleSignUp} />
         <div>
           <p>
-            이미 계정이 있으신가요? <Link to="/login">로그인</Link>
+            이미 계정이 있으신가요?{" "}
+            <Link to="/login" className="underline">
+              로그인
+            </Link>
           </p>
         </div>
-      </div>
-    </div>
+      </FormBox>
+    </Main>
   );
 };
 
