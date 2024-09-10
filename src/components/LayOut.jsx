@@ -24,6 +24,8 @@ export const LayOut = ({ user, setUser }) => {
             {user ? (
               <>
                 <Link to="/profile">프로필</Link>
+                <Link to="/test">MBTI 테스트</Link>
+                <Link to="/results">결과보기</Link>
                 <button onClick={handleLogOut}>로그아웃</button>
               </>
             ) : (
