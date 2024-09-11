@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import { Main } from "../components/Styled";
 import styled from "styled-components";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-const Home = ({ user }) => {
+const Home = () => {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <Main className="gap-4">
       <h1 className="text-4xl">무료 성격 테스트</h1>
       <p>자신의 성격 유형을 확인할 수 있도록 솔직하게 답변해 주세요.</p>
-      {user ? (
+      {isAuthenticated ? (
         <BgRedLink to="/test">MBTI 테스트</BgRedLink>
       ) : (
         <BgRedLink to="/login">로그인하기</BgRedLink>

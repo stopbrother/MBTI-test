@@ -2,15 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
 import { login } from "../api/auth";
 import { FormBox, Main } from "../components/Styled";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
 
-const Login = ({ setUser }) => {
+const Login = () => {
+  const { contextLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const { data, isPending, isError } = useQuery({
+    queryKey: [],
+    queryFn: login,
+  });
 
   const handleLogin = async (formData) => {
     try {
       const userData = await login(formData);
-      setUser(userData);
-      localStorage.setItem("accessToken", userData.accessToken);
+      contextLogin(userData.accessToken);
       navigate("/");
     } catch {
       alert("로그인에 실패했습니다. 다시 시도해주세요.");
