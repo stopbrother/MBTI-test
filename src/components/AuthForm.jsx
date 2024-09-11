@@ -36,6 +36,7 @@ const AuthForm = ({ mode, onSubmit }) => {
       {mode === "signup" && (
         <FormInput
           type="text"
+          name="nickname"
           id="nickname"
           placeholder="닉네임"
           value={formData.nickname}
