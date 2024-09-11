@@ -1,5 +1,7 @@
 # MBTI 테스트
-MBTI 성격 유형 테스트 서비스 구현
+MBTI 성격 유형 테스트 서비스 구현 
+<br>
+**배포주소 :** https://mbti-test-iota.vercel.app/
 
 # 회원가입 / 로그인
 ### 회원가입
